@@ -58,12 +58,12 @@ class SqliteUniqueAdapter extends SqliteAdapter<SqliteUnique> {
 
   @override
   Future<SqliteUnique> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$SqliteUniqueFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(SqliteUnique input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$SqliteUniqueToSqlite(input,
           provider: provider, repository: repository);
 }

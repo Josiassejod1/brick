@@ -69,25 +69,25 @@ class OfflineFirstGeneratorArgumentsAdapter
   @override
   Future<OfflineFirstGeneratorArguments> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstGeneratorArgumentsFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(OfflineFirstGeneratorArguments input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstGeneratorArgumentsToRest(input,
           provider: provider, repository: repository);
   @override
   Future<OfflineFirstGeneratorArguments> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstGeneratorArgumentsFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(OfflineFirstGeneratorArguments input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstGeneratorArgumentsToSqlite(input,
           provider: provider, repository: repository);
 }

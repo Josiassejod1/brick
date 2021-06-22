@@ -3,30 +3,26 @@
 part of '../brick.g.dart';
 
 Future<KitchenSink> _$KitchenSinkFromRest(Map<String, dynamic> data,
-    {required RestProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required RestProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return KitchenSink(
       anyString: data['any_string'] as String?,
       anyInt: data['any_int'] as int?,
       anyDouble: data['any_double'] as double?,
       anyNum: data['any_num'] as num?,
-      anyDateTime: data['any_date_time'] == null
-          ? null
-          : DateTime.tryParse(data['any_date_time'] as String),
+      anyDateTime:
+          data['any_date_time'] == null ? null : DateTime.tryParse(data['any_date_time'] as String),
       anyBool: data['any_bool'] as bool?,
       anyMap: data['any_map'],
-      enumFromIndex: data['enum_from_index'] is int
-          ? AnyEnum.values[data['enum_from_index'] as int]
-          : null,
+      enumFromIndex:
+          data['enum_from_index'] is int ? AnyEnum.values[data['enum_from_index'] as int] : null,
       anyList: data['any_list'].toList().cast<int>() ?? <int>[],
       anySet: data['any_set'].toSet().cast<int>() ?? <int>{},
-      offlineFirstModel: await MountyAdapter().fromRest(
-          data['offline_first_model'],
-          provider: provider,
-          repository: repository),
-      listOfflineFirstModel: await Future.wait<Mounty>(
-          data['list_offline_first_model']?.map((d) => MountyAdapter().fromRest(d, provider: provider, repository: repository)).toList() ??
-              []),
+      offlineFirstModel: await MountyAdapter()
+          .fromRest(data['offline_first_model'], provider: provider, repository: repository),
+      listOfflineFirstModel: await Future.wait<Mounty>(data['list_offline_first_model']
+              ?.map((d) => MountyAdapter().fromRest(d, provider: provider, repository: repository))
+              .toList() ??
+          []),
       setOfflineFirstModel:
           (await Future.wait<Mounty>(data['set_offline_first_model']?.map((d) => MountyAdapter().fromRest(d, provider: provider, repository: repository)).toSet() ?? []))
               .toSet(),
@@ -44,8 +40,7 @@ Future<KitchenSink> _$KitchenSinkFromRest(Map<String, dynamic> data,
           ? null
           : data['rest_annotation_nullable'] as String?,
       restAnnotationIgnoreTo: data['rest_annotation_ignore_to'] as String?,
-      restAnnotationFromGenerator:
-          data['rest_annotation_from_generator'].toString(),
+      restAnnotationFromGenerator: data['rest_annotation_from_generator'].toString(),
       restAnnotationToGenerator: data['rest_annotation_to_generator'] as String?,
       enumFromString: RestAdapter.enumValueFromName(AnyEnum.values, data['enum_from_string']),
       sqliteAnnotationNullable: data['sqlite_annotation_nullable'] as String?,
@@ -55,12 +50,14 @@ Future<KitchenSink> _$KitchenSinkFromRest(Map<String, dynamic> data,
       sqliteAnnotationIgnore: data['sqlite_annotation_ignore'] as String?,
       sqliteAnnotationUnique: data['sqlite_annotation_unique'] as String?,
       sqliteAnnotationName: data['sqlite_annotation_name'] as String?,
-      offlineFirstWhere: await repository?.getAssociation<Mounty>(Query(where: [Where.exact('email', data['mounty_email'])], providerArgs: {'limit': 1})).then((r) => r?.isNotEmpty ?? false ? r!.first : null));
+      offlineFirstWhere: await repository
+          ?.getAssociation<Mounty>(
+              Query(where: [Where.exact('email', data['mounty_email'])], providerArgs: {'limit': 1}))
+          .then((r) => r?.isNotEmpty ?? false ? r!.first : null));
 }
 
 Future<Map<String, dynamic>> _$KitchenSinkToRest(KitchenSink instance,
-    {required RestProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required RestProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return {
     'any_string': instance.anyString,
     'any_int': instance.anyInt,
@@ -69,39 +66,33 @@ Future<Map<String, dynamic>> _$KitchenSinkToRest(KitchenSink instance,
     'any_date_time': instance.anyDateTime?.toIso8601String(),
     'any_bool': instance.anyBool,
     'any_map': instance.anyMap,
-    'enum_from_index': instance.enumFromIndex != null
-        ? AnyEnum.values.indexOf(instance.enumFromIndex!)
-        : null,
+    'enum_from_index':
+        instance.enumFromIndex != null ? AnyEnum.values.indexOf(instance.enumFromIndex!) : null,
     'any_list': instance.anyList,
     'any_set': instance.anySet,
     'offline_first_model': instance.offlineFirstModel != null
-        ? await MountyAdapter().toRest(instance.offlineFirstModel!,
-            provider: provider, repository: repository)
+        ? await MountyAdapter()
+            .toRest(instance.offlineFirstModel!, provider: provider, repository: repository)
         : null,
     'list_offline_first_model': await Future.wait<Map<String, dynamic>>(instance
             .listOfflineFirstModel
-            ?.map((s) => MountyAdapter()
-                .toRest(s, provider: provider, repository: repository))
+            ?.map((s) => MountyAdapter().toRest(s, provider: provider, repository: repository))
             .toList() ??
         []),
-    'set_offline_first_model': await Future.wait<Map<String, dynamic>>(instance
-            .setOfflineFirstModel
-            ?.map((s) => MountyAdapter()
-                .toRest(s, provider: provider, repository: repository))
+    'set_offline_first_model': await Future.wait<Map<String, dynamic>>(instance.setOfflineFirstModel
+            ?.map((s) => MountyAdapter().toRest(s, provider: provider, repository: repository))
             .toList() ??
         []),
     'offline_first_serdes': instance.offlineFirstSerdes?.toRest(),
     'list_offline_first_serdes':
         instance.listOfflineFirstSerdes?.map((Hat c) => c.toRest()).toList(),
-    'set_offline_first_serdes':
-        instance.setOfflineFirstSerdes?.map((Hat c) => c.toRest()).toList(),
+    'set_offline_first_serdes': instance.setOfflineFirstSerdes?.map((Hat c) => c.toRest()).toList(),
     'restAnnotationOtherName': instance.restAnnotationName,
     'rest_annotation_default_value': instance.restAnnotationDefaultValue,
     'rest_annotation_nullable': instance.restAnnotationNullable,
     'rest_annotation_ignore_from': instance.restAnnotationIgnoreFrom,
     'rest_annotation_from_generator': instance.restAnnotationFromGenerator,
-    'rest_annotation_to_generator':
-        instance.restAnnotationToGenerator.toString(),
+    'rest_annotation_to_generator': instance.restAnnotationToGenerator.toString(),
     'enum_from_string': instance.enumFromString?.toString().split('.').last,
     'sqlite_annotation_nullable': instance.sqliteAnnotationNullable,
     'sqlite_annotation_default_value': instance.sqliteAnnotationDefaultValue,
@@ -115,14 +106,11 @@ Future<Map<String, dynamic>> _$KitchenSinkToRest(KitchenSink instance,
 }
 
 Future<KitchenSink> _$KitchenSinkFromSqlite(Map<String, dynamic> data,
-    {required SqliteProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required SqliteProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return KitchenSink(
-      anyString:
-          data['any_string'] == null ? null : data['any_string'] as String?,
+      anyString: data['any_string'] == null ? null : data['any_string'] as String?,
       anyInt: data['any_int'] == null ? null : data['any_int'] as int?,
-      anyDouble:
-          data['any_double'] == null ? null : data['any_double'] as double?,
+      anyDouble: data['any_double'] == null ? null : data['any_double'] as double?,
       anyNum: data['any_num'] == null ? null : data['any_num'] as num?,
       anyDateTime: data['any_date_time'] == null
           ? null
@@ -133,28 +121,23 @@ Future<KitchenSink> _$KitchenSinkFromSqlite(Map<String, dynamic> data,
       anyMap: data['any_map'] == null ? null : jsonDecode(data['any_map']),
       enumFromIndex: data['enum_from_index'] == null
           ? null
-          : (data['enum_from_index'] > -1
-              ? AnyEnum.values[data['enum_from_index'] as int]
-              : null),
-      anyList: data['any_list'] == null
-          ? null
-          : jsonDecode(data['any_list']).toList().cast<int>(),
-      anySet: data['any_set'] == null
-          ? null
-          : jsonDecode(data['any_set']).toSet().cast<int>(),
+          : (data['enum_from_index'] > -1 ? AnyEnum.values[data['enum_from_index'] as int] : null),
+      anyList: data['any_list'] == null ? null : jsonDecode(data['any_list']).toList().cast<int>(),
+      anySet: data['any_set'] == null ? null : jsonDecode(data['any_set']).toSet().cast<int>(),
       offlineFirstModel: data['offline_first_model_Mounty_brick_id'] == null
           ? null
           : (data['offline_first_model_Mounty_brick_id'] > -1
               ? (await repository?.getAssociation<Mounty>(
-                  Query.where('primaryKey',
-                      data['offline_first_model_Mounty_brick_id'] as int,
+                  Query.where('primaryKey', data['offline_first_model_Mounty_brick_id'] as int,
                       limit1: true),
                 ))
                   ?.first
               : null),
-      listOfflineFirstModel: (await provider
-              .rawQuery('SELECT DISTINCT `f_Mounty_brick_id` FROM `_brick_KitchenSink_list_offline_first_model` WHERE l_KitchenSink_brick_id = ?',
-                  [data['_brick_id'] as int]).then((results) {
+      listOfflineFirstModel: (await provider.rawQuery(
+              'SELECT DISTINCT `f_Mounty_brick_id` FROM `_brick_KitchenSink_list_offline_first_model` WHERE l_KitchenSink_brick_id = ?',
+              [
+            data['_brick_id'] as int
+          ]).then((results) {
         final ids = results.map((r) => r['f_Mounty_brick_id']);
         return Future.wait<Mounty>(ids.map((primaryKey) => repository!
             .getAssociation<Mounty>(
@@ -163,9 +146,11 @@ Future<KitchenSink> _$KitchenSinkFromSqlite(Map<String, dynamic> data,
             .then((r) => r!.first)));
       }))
           .toList(),
-      setOfflineFirstModel: (await provider
-              .rawQuery('SELECT DISTINCT `f_Mounty_brick_id` FROM `_brick_KitchenSink_set_offline_first_model` WHERE l_KitchenSink_brick_id = ?',
-                  [data['_brick_id'] as int]).then((results) {
+      setOfflineFirstModel: (await provider.rawQuery(
+              'SELECT DISTINCT `f_Mounty_brick_id` FROM `_brick_KitchenSink_set_offline_first_model` WHERE l_KitchenSink_brick_id = ?',
+              [
+            data['_brick_id'] as int
+          ]).then((results) {
         final ids = results.map((r) => r['f_Mounty_brick_id']);
         return Future.wait<Mounty>(ids.map((primaryKey) => repository!
             .getAssociation<Mounty>(
@@ -200,8 +185,7 @@ Future<KitchenSink> _$KitchenSinkFromSqlite(Map<String, dynamic> data,
           ? null
           : (data['offline_first_where_Mounty_brick_id'] > -1
               ? (await repository?.getAssociation<Mounty>(
-                  Query.where('primaryKey',
-                      data['offline_first_where_Mounty_brick_id'] as int,
+                  Query.where('primaryKey', data['offline_first_where_Mounty_brick_id'] as int,
                       limit1: true),
                 ))
                   ?.first
@@ -210,8 +194,7 @@ Future<KitchenSink> _$KitchenSinkFromSqlite(Map<String, dynamic> data,
 }
 
 Future<Map<String, dynamic>> _$KitchenSinkToSqlite(KitchenSink instance,
-    {required SqliteProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required SqliteProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return {
     'any_string': instance.anyString,
     'any_int': instance.anyInt,
@@ -220,24 +203,19 @@ Future<Map<String, dynamic>> _$KitchenSinkToSqlite(KitchenSink instance,
     'any_date_time': instance.anyDateTime?.toIso8601String(),
     'any_bool': instance.anyBool == null ? null : (instance.anyBool! ? 1 : 0),
     'any_map': jsonEncode(instance.anyMap ?? {}),
-    'enum_from_index': instance.enumFromIndex != null
-        ? AnyEnum.values.indexOf(instance.enumFromIndex!)
-        : null,
+    'enum_from_index':
+        instance.enumFromIndex != null ? AnyEnum.values.indexOf(instance.enumFromIndex!) : null,
     'any_list': jsonEncode(instance.anyList ?? []),
     'any_set': jsonEncode(instance.anySet?.toList() ?? []),
     'offline_first_model_Mounty_brick_id': instance.offlineFirstModel != null
         ? instance.offlineFirstModel!.primaryKey ??
-            await provider.upsert<Mounty>(instance.offlineFirstModel!,
-                repository: repository)
+            await provider.upsert<Mounty>(instance.offlineFirstModel!, repository: repository)
         : null,
     'offline_first_serdes': instance.offlineFirstSerdes?.toSqlite(),
-    'list_offline_first_serdes': jsonEncode(instance.listOfflineFirstSerdes
-            ?.map((Hat c) => c.toSqlite())
-            .toList() ??
-        []),
-    'set_offline_first_serdes': jsonEncode(
-        instance.setOfflineFirstSerdes?.map((Hat c) => c.toSqlite()).toList() ??
-            []),
+    'list_offline_first_serdes':
+        jsonEncode(instance.listOfflineFirstSerdes?.map((Hat c) => c.toSqlite()).toList() ?? []),
+    'set_offline_first_serdes':
+        jsonEncode(instance.setOfflineFirstSerdes?.map((Hat c) => c.toSqlite()).toList() ?? []),
     'rest_annotation_name': instance.restAnnotationName,
     'rest_annotation_default_value': instance.restAnnotationDefaultValue,
     'rest_annotation_nullable': instance.restAnnotationNullable,
@@ -246,20 +224,17 @@ Future<Map<String, dynamic>> _$KitchenSinkToSqlite(KitchenSink instance,
     'rest_annotation_ignore_from': instance.restAnnotationIgnoreFrom,
     'rest_annotation_from_generator': instance.restAnnotationFromGenerator,
     'rest_annotation_to_generator': instance.restAnnotationToGenerator,
-    'enum_from_string': instance.enumFromString != null
-        ? AnyEnum.values.indexOf(instance.enumFromString!)
-        : null,
+    'enum_from_string':
+        instance.enumFromString != null ? AnyEnum.values.indexOf(instance.enumFromString!) : null,
     'sqlite_annotation_nullable': instance.sqliteAnnotationNullable,
     'sqlite_annotation_default_value': instance.sqliteAnnotationDefaultValue,
     'sqlite_annotation_from_generator': instance.sqliteAnnotationFromGenerator,
-    'sqlite_annotation_to_generator':
-        instance.sqliteAnnotationToGenerator.toString(),
+    'sqlite_annotation_to_generator': instance.sqliteAnnotationToGenerator.toString(),
     'sqlite_annotation_unique': instance.sqliteAnnotationUnique,
     'custom column name': instance.sqliteAnnotationName,
     'offline_first_where_Mounty_brick_id': instance.offlineFirstWhere != null
         ? instance.offlineFirstWhere!.primaryKey ??
-            await provider.upsert<Mounty>(instance.offlineFirstWhere!,
-                repository: repository)
+            await provider.upsert<Mounty>(instance.offlineFirstWhere!, repository: repository)
         : null
   };
 }
@@ -476,8 +451,7 @@ class KitchenSinkAdapter extends OfflineFirstWithRestAdapter<KitchenSink> {
     )
   };
   @override
-  Future<int?> primaryKeyByUniqueColumns(
-      KitchenSink instance, DatabaseExecutor executor) async {
+  Future<int?> primaryKeyByUniqueColumns(KitchenSink instance, DatabaseExecutor executor) async {
     final results = await executor.rawQuery('''
         SELECT * FROM `KitchenSink` WHERE sqlite_annotation_unique = ? LIMIT 1''',
         [instance.sqliteAnnotationUnique]);
@@ -496,8 +470,7 @@ class KitchenSinkAdapter extends OfflineFirstWithRestAdapter<KitchenSink> {
   Future<void> afterSave(instance, {required provider, repository}) async {
     if (instance.primaryKey != null) {
       await Future.wait<int?>(instance.listOfflineFirstModel?.map((s) async {
-            final id = s.primaryKey ??
-                await provider.upsert<Mounty>(s, repository: repository);
+            final id = s.primaryKey ?? await provider.upsert<Mounty>(s, repository: repository);
             return await provider.rawInsert(
                 'INSERT OR IGNORE INTO `_brick_KitchenSink_list_offline_first_model` (`l_KitchenSink_brick_id`, `f_Mounty_brick_id`) VALUES (?, ?)',
                 [instance.primaryKey, id]);
@@ -507,8 +480,7 @@ class KitchenSinkAdapter extends OfflineFirstWithRestAdapter<KitchenSink> {
 
     if (instance.primaryKey != null) {
       await Future.wait<int?>(instance.setOfflineFirstModel?.map((s) async {
-            final id = s.primaryKey ??
-                await provider.upsert<Mounty>(s, repository: repository);
+            final id = s.primaryKey ?? await provider.upsert<Mounty>(s, repository: repository);
             return await provider.rawInsert(
                 'INSERT OR IGNORE INTO `_brick_KitchenSink_set_offline_first_model` (`l_KitchenSink_brick_id`, `f_Mounty_brick_id`) VALUES (?, ?)',
                 [instance.primaryKey, id]);
@@ -520,25 +492,21 @@ class KitchenSinkAdapter extends OfflineFirstWithRestAdapter<KitchenSink> {
   @override
   Future<KitchenSink> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
-      await _$KitchenSinkFromRest(input,
-          provider: provider, repository: repository);
+          required covariant OfflineFirstWithRestRepository repository}) async =>
+      await _$KitchenSinkFromRest(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(KitchenSink input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
-      await _$KitchenSinkToRest(input,
-          provider: provider, repository: repository);
+          required covariant OfflineFirstWithRestRepository repository}) async =>
+      await _$KitchenSinkToRest(input, provider: provider, repository: repository);
   @override
   Future<KitchenSink> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
-      await _$KitchenSinkFromSqlite(input,
-          provider: provider, repository: repository);
+          required covariant OfflineFirstWithRestRepository repository}) async =>
+      await _$KitchenSinkFromSqlite(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(KitchenSink input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
-      await _$KitchenSinkToSqlite(input,
-          provider: provider, repository: repository);
+          required covariant OfflineFirstWithRestRepository repository}) async =>
+      await _$KitchenSinkToSqlite(input, provider: provider, repository: repository);
 }

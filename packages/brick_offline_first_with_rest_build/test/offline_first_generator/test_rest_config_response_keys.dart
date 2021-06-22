@@ -72,25 +72,25 @@ class RestConfigResponseKeysAdapter
   @override
   Future<RestConfigResponseKeys> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigResponseKeysFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(RestConfigResponseKeys input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigResponseKeysToRest(input,
           provider: provider, repository: repository);
   @override
   Future<RestConfigResponseKeys> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigResponseKeysFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(RestConfigResponseKeys input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigResponseKeysToSqlite(input,
           provider: provider, repository: repository);
 }

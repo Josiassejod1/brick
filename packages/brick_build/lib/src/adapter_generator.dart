@@ -23,7 +23,7 @@ class AdapterGenerator {
       final expectedOutput = 'Future<${generator.adapterMethodOutputType}>';
       final methodAction = generator.doesDeserialize ? 'from' : 'to';
       final methodArguments =
-          '${generator.adapterMethodInputType} input, {required provider, covariant ${superAdapterName}Repository? repository}';
+          '${generator.adapterMethodInputType} input, {required provider, required covariant ${superAdapterName}Repository repository}';
       final methodName = '$methodAction${generator.providerName}($methodArguments)';
 
       acc.add('@override\n$expectedOutput $methodName async => ${generator.adapterMethod};');

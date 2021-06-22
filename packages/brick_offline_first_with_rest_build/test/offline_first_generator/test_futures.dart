@@ -188,24 +188,24 @@ class FuturesAdapter extends OfflineFirstAdapter<Futures> {
   @override
   Future<Futures> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$FuturesFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(Futures input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$FuturesToRest(input, provider: provider, repository: repository);
   @override
   Future<Futures> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$FuturesFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(Futures input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$FuturesToSqlite(input,
           provider: provider, repository: repository);
 }

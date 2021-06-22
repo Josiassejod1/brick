@@ -105,12 +105,12 @@ class BooleanFieldsAdapter extends SqliteAdapter<BooleanFields> {
 
   @override
   Future<BooleanFields> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$BooleanFieldsFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(BooleanFields input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$BooleanFieldsToSqlite(input,
           provider: provider, repository: repository);
 }

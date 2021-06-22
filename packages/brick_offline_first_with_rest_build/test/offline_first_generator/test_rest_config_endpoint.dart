@@ -75,25 +75,25 @@ class RestConfigEndpointAdapter
   @override
   Future<RestConfigEndpoint> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigEndpointFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(RestConfigEndpoint input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigEndpointToRest(input,
           provider: provider, repository: repository);
   @override
   Future<RestConfigEndpoint> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigEndpointFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(RestConfigEndpoint input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$RestConfigEndpointToSqlite(input,
           provider: provider, repository: repository);
 }

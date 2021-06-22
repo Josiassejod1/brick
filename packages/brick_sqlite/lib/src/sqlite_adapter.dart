@@ -34,12 +34,12 @@ abstract class SqliteAdapter<_Model extends Model> implements Adapter<_Model> {
   Future<_Model> fromSqlite(
     Map<String, dynamic> data, {
     required SqliteProvider provider,
-    ModelRepository<SqliteModel>? repository,
+    required ModelRepository<SqliteModel> repository,
   });
   Future<Map<String, dynamic>> toSqlite(
     _Model data, {
     required SqliteProvider provider,
-    ModelRepository<SqliteModel>? repository,
+    required ModelRepository<SqliteModel> repository,
   });
 
   /// A dictionary that connects field names to SQLite column properties.

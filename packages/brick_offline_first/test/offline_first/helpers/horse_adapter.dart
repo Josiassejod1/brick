@@ -93,18 +93,22 @@ class HorseAdapter extends OfflineFirstWithRestAdapter<Horse> {
 
   @override
   Future<Horse> fromRest(Map<String, dynamic> input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$HorseFromRest(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(Horse input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$HorseToRest(input, provider: provider, repository: repository);
   @override
   Future<Horse> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$HorseFromSqlite(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(Horse input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$HorseToSqlite(input, provider: provider, repository: repository);
 }

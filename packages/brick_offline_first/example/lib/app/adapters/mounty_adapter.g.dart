@@ -3,8 +3,7 @@
 part of '../brick.g.dart';
 
 Future<Mounty> _$MountyFromRest(Map<String, dynamic> data,
-    {required RestProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required RestProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return Mounty(
       name: data['name'] as String?,
       email: data['email'] as String?,
@@ -12,18 +11,12 @@ Future<Mounty> _$MountyFromRest(Map<String, dynamic> data,
 }
 
 Future<Map<String, dynamic>> _$MountyToRest(Mounty instance,
-    {required RestProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
-  return {
-    'name': instance.name,
-    'email': instance.email,
-    'hat': instance.hat?.toRest()
-  };
+    {required RestProvider provider, OfflineFirstWithRestRepository? repository}) async {
+  return {'name': instance.name, 'email': instance.email, 'hat': instance.hat?.toRest()};
 }
 
 Future<Mounty> _$MountyFromSqlite(Map<String, dynamic> data,
-    {required SqliteProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
+    {required SqliteProvider provider, OfflineFirstWithRestRepository? repository}) async {
   return Mounty(
       name: data['name'] == null ? null : data['name'] as String?,
       email: data['email'] == null ? null : data['email'] as String?,
@@ -32,13 +25,8 @@ Future<Mounty> _$MountyFromSqlite(Map<String, dynamic> data,
 }
 
 Future<Map<String, dynamic>> _$MountyToSqlite(Mounty instance,
-    {required SqliteProvider provider,
-    OfflineFirstWithRestRepository? repository}) async {
-  return {
-    'name': instance.name,
-    'email': instance.email,
-    'hat': instance.hat?.toSqlite()
-  };
+    {required SqliteProvider provider, OfflineFirstWithRestRepository? repository}) async {
+  return {'name': instance.name, 'email': instance.email, 'hat': instance.hat?.toSqlite()};
 }
 
 /// Construct a [Mounty]
@@ -79,8 +67,7 @@ class MountyAdapter extends OfflineFirstWithRestAdapter<Mounty> {
     )
   };
   @override
-  Future<int?> primaryKeyByUniqueColumns(
-          Mounty instance, DatabaseExecutor executor) async =>
+  Future<int?> primaryKeyByUniqueColumns(Mounty instance, DatabaseExecutor executor) async =>
       instance.primaryKey;
   @override
   final String tableName = 'Mounty';
@@ -88,22 +75,21 @@ class MountyAdapter extends OfflineFirstWithRestAdapter<Mounty> {
   @override
   Future<Mounty> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyFromRest(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(Mounty input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyToRest(input, provider: provider, repository: repository);
   @override
   Future<Mounty> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
-      await _$MountyFromSqlite(input,
-          provider: provider, repository: repository);
+          required covariant OfflineFirstWithRestRepository repository}) async =>
+      await _$MountyFromSqlite(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(Mounty input,
           {required provider,
-          covariant OfflineFirstWithRestRepository? repository}) async =>
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyToSqlite(input, provider: provider, repository: repository);
 }

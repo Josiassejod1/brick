@@ -48,12 +48,12 @@ class SqliteColumnTypeAdapter extends SqliteAdapter<SqliteColumnType> {
 
   @override
   Future<SqliteColumnType> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$SqliteColumnTypeFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(SqliteColumnType input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$SqliteColumnTypeToSqlite(input,
           provider: provider, repository: repository);
 }

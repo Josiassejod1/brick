@@ -73,12 +73,12 @@ class AfterSaveWithAssociationAdapter
 
   @override
   Future<AfterSaveWithAssociation> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$AfterSaveWithAssociationFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(AfterSaveWithAssociation input,
-          {required provider, covariant SqliteRepository? repository}) async =>
+          {required provider, required covariant SqliteRepository repository}) async =>
       await _$AfterSaveWithAssociationToSqlite(input,
           provider: provider, repository: repository);
 }

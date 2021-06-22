@@ -165,25 +165,25 @@ class OneToManyAssociationAdapter
   @override
   Future<OneToManyAssociation> fromRest(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OneToManyAssociationFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(OneToManyAssociation input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OneToManyAssociationToRest(input,
           provider: provider, repository: repository);
   @override
   Future<OneToManyAssociation> fromSqlite(Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OneToManyAssociationFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(OneToManyAssociation input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OneToManyAssociationToSqlite(input,
           provider: provider, repository: repository);
 }

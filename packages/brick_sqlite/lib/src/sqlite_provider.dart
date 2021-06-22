@@ -47,7 +47,7 @@ class SqliteProvider implements Provider<SqliteModel> {
     this.dbName, {
     this.databaseFactory,
     required this.modelDictionary,
-  })   : _lock = Lock(reentrant: true),
+  })  : _lock = Lock(reentrant: true),
         _logger = Logger('SqliteProvider');
 
   /// Remove record from SQLite. [query] is ignored.
@@ -213,7 +213,7 @@ class SqliteProvider implements Provider<SqliteModel> {
   Future<List<_Model>> rawGet<_Model extends SqliteModel>(
     String sql,
     List arguments, {
-    ModelRepository<SqliteModel>? repository,
+    required ModelRepository<SqliteModel> repository,
   }) async {
     final adapter = modelDictionary.adapterFor[_Model]!;
 

@@ -54,18 +54,22 @@ class MountyAdapter extends OfflineFirstWithRestAdapter<Mounty> {
 
   @override
   Future<Mounty> fromRest(Map<String, dynamic> input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyFromRest(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(Mounty input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyToRest(input, provider: provider, repository: repository);
   @override
   Future<Mounty> fromSqlite(Map<String, dynamic> input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyFromSqlite(input, provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(Mounty input,
-          {required provider, covariant OfflineFirstWithRestRepository? repository}) async =>
+          {required provider,
+          required covariant OfflineFirstWithRestRepository repository}) async =>
       await _$MountyToSqlite(input, provider: provider, repository: repository);
 }

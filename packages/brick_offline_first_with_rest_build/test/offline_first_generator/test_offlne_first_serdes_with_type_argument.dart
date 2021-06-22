@@ -73,27 +73,27 @@ class OfflineFirstSerdesWithTypeArgumentAdapter
   Future<OfflineFirstSerdesWithTypeArgument> fromRest(
           Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstSerdesWithTypeArgumentFromRest(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toRest(OfflineFirstSerdesWithTypeArgument input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstSerdesWithTypeArgumentToRest(input,
           provider: provider, repository: repository);
   @override
   Future<OfflineFirstSerdesWithTypeArgument> fromSqlite(
           Map<String, dynamic> input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstSerdesWithTypeArgumentFromSqlite(input,
           provider: provider, repository: repository);
   @override
   Future<Map<String, dynamic>> toSqlite(
           OfflineFirstSerdesWithTypeArgument input,
           {required provider,
-          covariant OfflineFirstRepository? repository}) async =>
+          required covariant OfflineFirstRepository repository}) async =>
       await _$OfflineFirstSerdesWithTypeArgumentToSqlite(input,
           provider: provider, repository: repository);
 }
